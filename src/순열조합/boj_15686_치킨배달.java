@@ -12,7 +12,7 @@ class Point{
 	}
 }
 
-public class boj_15686 {
+public class boj_15686_치킨배달 {
 	static int N,R,homecnt,chickencnt, chickenmin=99999999;
 	static int []numbers;
 	static List <Point>chicken = new ArrayList<>();
