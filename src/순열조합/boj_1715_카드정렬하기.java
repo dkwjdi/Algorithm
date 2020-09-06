@@ -1,5 +1,4 @@
 package 순열조합;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,7 +26,6 @@ public class boj_1715_카드정렬하기 {
 			return;
 		}
 		
-		
 		int ans=0;
 		while(queue.size()!=1) {
 			int a=queue.poll();
@@ -36,7 +34,5 @@ public class boj_1715_카드정렬하기 {
 			queue.offer(a+b);
 		}
 		System.out.println(ans);
-
 	}
-
 }
