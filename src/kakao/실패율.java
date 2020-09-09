@@ -38,32 +38,33 @@ public class 실패율 {
 
 		int len = stages.length;
 
-		double[] cnt = new double[N + 1];
+		double[] stageCnt = new double[N + 1];
 
 		for (int i = 0; i < len; i++) {
 			if (stages[i] > N)
 				continue;
-			cnt[stages[i]] += 1;
+			stageCnt[stages[i]] += 1;
 		}
-
-		Point[] failcheck = new Point[N ];
-		int tmplen = len;
-		for (int i = 0; i < N; i++) {
-
-			double tmp = cnt[i+1] / tmplen;
-			failcheck[i] = new Point(tmp, i+1);
-			tmplen -= cnt[i+1];
-		}
-
 		
+		Point[] failcheck = new Point[N];
+		for(int i=0; i<N; i++) {
+			failcheck[i]=new Point(0,i+1);
+		}
+		
+		int tmpstageCnt = len;
+		for (int i = 0; i < N; i++) {
+			double tmp = stageCnt[i+1] / tmpstageCnt;
+			failcheck[i].num=i+1;
+			failcheck[i].fail=tmp;
+			tmpstageCnt -= stageCnt[i+1];
+			if(tmpstageCnt<=0) break;
+		}
+
 		Arrays.sort(failcheck);
 		int[] answer = new int[N];
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < N; i++) 
 			answer[i] = failcheck[i].num;
-		}
-
+		
 		return answer;
-
 	}
-
 }
