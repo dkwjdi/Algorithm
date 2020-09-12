@@ -16,10 +16,10 @@ public class 실패율 {
 
 		@Override
 		public int compareTo(Point o) {
-			int r = new Double(this.fail).compareTo(o.fail) * -1;
-			if (r == 0)
-				r = this.num - o.num;
-			return r;
+			if(this.fail == o.fail) {
+				return Integer.compare(this.num,o.num);
+			}
+			return Double.compare(o.fail, this.fail);
 		}
 
 	}
