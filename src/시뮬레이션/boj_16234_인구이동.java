@@ -1,5 +1,4 @@
 package 시뮬레이션;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -32,6 +31,7 @@ public class boj_16234_인구이동 {
 		}
 		
 		int flag=0;
+
 		outer: while (true) {
 			visited = new boolean[N][N];
 			flag=0;
@@ -41,8 +41,10 @@ public class boj_16234_인구이동 {
 					if(bfs(i,j,visited)) flag=1;
 				}
 			}
+			
 			if(flag==0) break outer;
 			populationMove++;
+			
 		}
 		System.out.println(populationMove);
 	}
@@ -69,7 +71,9 @@ public class boj_16234_인구이동 {
 					queue.offer(new int[] {nx,ny});
 					list.add(new int[] {nx,ny});
 				}
+
 			}
+
 		}
 		int size=list.size();
 		int sum=0;
@@ -93,4 +97,5 @@ public class boj_16234_인구이동 {
 		if(result>=L && result<=R) return true;
 		return false;
 	}
+
 }
