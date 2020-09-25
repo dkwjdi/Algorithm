@@ -1,31 +1,44 @@
 package IM대비문제;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class boj_13300_방배정 {
-	private static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String str1[] = br.readLine().split(" ");
-		int N = Integer.parseInt(str1[0]);
-		int K = Integer.parseInt(str1[1]);
-		String str2[] = br.readLine().split(" ");
-		int cur = 0;
-		for (int i = 0; i < K; i++) {
-			cur += Integer.parseInt(str2[i]);
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		int n=Integer.parseInt(st.nextToken()); //학생수 
+		int k=Integer.parseInt(st.nextToken()); //한방의 최대 학생수
+		int studentNum[][]=new int[7][2];
+		
+		for(int i=0; i<n; i++) {
+			st = new StringTokenizer(br.readLine()," ");
+			int s=Integer.parseInt(st.nextToken()) ,age=Integer.parseInt(st.nextToken());
+			studentNum[age][s]+=1;
 		}
-		int max = cur;
-		for (int i = K; i < N; i++) {
-			cur -= Integer.parseInt(str2[i - K]);
-			cur += Integer.parseInt(str2[i]);
-			max = Math.max(cur, max);
+		int cnt=0;
+		for(int i=1; i<7; i++) {
+			for(int j=0; j<=1; j++) {
+				if(studentNum[i][j]!=0) { //학생이 있다면!
+					cnt+=roomCnt(studentNum[i][j],k);
+				}
+			}
 		}
-		bw.write(String.valueOf(max));
-		bw.flush();
+		System.out.println(cnt);
+	}
+
+	private static int roomCnt(int studentNum, int k) {
+		int cnt=0;
+		while(true) {
+			studentNum-=k;
+			cnt++;
+			if(studentNum<=0) return cnt;
+		}
 	}
 }
