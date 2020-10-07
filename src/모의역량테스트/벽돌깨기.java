@@ -3,6 +3,7 @@ package 모의역량테스트;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -10,7 +11,7 @@ import java.util.StringTokenizer;
 public class 벽돌깨기 {
 	static int N, W, H, cnt, result;
 	static int map[][], copymap[][];
-
+	static HashSet<String> set;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
@@ -32,6 +33,7 @@ public class 벽돌깨기 {
 						cnt++;
 				}
 			}
+			 set = new HashSet<>();
 			sb.append("#" + tc + " " + solve() + "\n");
 			cnt = 0;
 
@@ -51,6 +53,7 @@ public class 벽돌깨기 {
 
 	private static int dropbomb(int q, int w, int e, int r) {
 		int tmpcnt = cnt;
+		
 
 		copymap = new int[H + 1][W + 1];
 		for (int i = 0; i <= H; i++) { // 배열복사
@@ -60,6 +63,14 @@ public class 벽돌깨기 {
 		}
 
 		int[] stone = { q, w, e, r };
+		String t = "";
+		for(int i=0;i<N;i++)
+			t += stone[i];
+		
+		 if(set.contains(t))
+	            return Integer.MAX_VALUE;
+	        set.add(t);
+		
 
 		for (int i = 0; i < N; i++) { // 폭탄개수만큼
 			for (int j = 0; j <= H; j++) { // 맨위에서 맨밑으로 떨어짐
