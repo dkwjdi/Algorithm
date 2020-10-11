@@ -12,17 +12,19 @@ public class 벽돌깨기 {
 	static int N, W, H, cnt, result;
 	static int map[][], copymap[][];
 	static HashSet<String> set;
+	static Queue<int[]> queue =new LinkedList<>();
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
 		StringBuilder sb = new StringBuilder();
+		map = new int[20][20];
+		copymap = new int[20][20];
 
 		for (int tc = 1; tc <= T; tc++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 			N = Integer.parseInt(st.nextToken());
 			W = Integer.parseInt(st.nextToken());
 			H = Integer.parseInt(st.nextToken());
-			map = new int[H + 1][W + 1];
 			result = Integer.MAX_VALUE;
 
 			for (int i = 1; i <= H; i++) {
@@ -55,7 +57,7 @@ public class 벽돌깨기 {
 		int tmpcnt = cnt;
 		
 
-		copymap = new int[H + 1][W + 1];
+		
 		for (int i = 0; i <= H; i++) { // 배열복사
 			for (int j = 0; j <= W; j++) {
 				copymap[i][j] = map[i][j];
@@ -104,7 +106,7 @@ public class 벽돌깨기 {
 	}
 
 	private static int bomb(int x, int y, int size) {
-		Queue<int[]> queue = new LinkedList<>();
+		queue.clear();
 		queue.offer(new int[] { x, y, size });
 		copymap[x][y] = 0;
 		int destroy = 1;
