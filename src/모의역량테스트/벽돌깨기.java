@@ -72,6 +72,7 @@ public class 벽돌깨기 {
 		 if(set.contains(t))
 	            return Integer.MAX_VALUE;
 	        set.add(t);
+	        
 		
 
 		for (int i = 0; i < N; i++) { // 폭탄개수만큼
