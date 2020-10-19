@@ -16,7 +16,7 @@ public class SW_EX_D4_음식배달 {
 		}
 	}
 	static class Food{
-		int x,y,cost;
+		int x,y,cost; 
 		public Food(int x, int y, int cost) {
 			this.x = x;
 			this.y = y;
