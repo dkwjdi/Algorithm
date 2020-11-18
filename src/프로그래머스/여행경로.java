@@ -1,22 +1,19 @@
 package 프로그래머스;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
+	
 
 public class 여행경로 {
 	static class Solution {
 		static class Airport implements Comparable<Airport> {
 			String start;
 			String end;
-
 			public Airport(String start, String end) {
 				this.start = start;
 				this.end = end;
 			}
-
 			@Override
 			public int compareTo(Airport o) {
 				if(this.start.equals(o.start)) {
@@ -50,8 +47,6 @@ public class 여행경로 {
 					visit[i]=false;
 				}
 			}
-			
-			System.out.println(Arrays.toString(answer));
 			return answer;
 		}
 
@@ -73,7 +68,6 @@ public class 여행경로 {
 				}
 			}
 		}
-
 	}
 
 	public static void main(String[] args) {
