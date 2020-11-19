@@ -1,6 +1,7 @@
 package 모의역량테스트;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;

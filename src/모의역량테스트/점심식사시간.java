@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
@@ -12,19 +11,15 @@ import java.util.StringTokenizer;
 public class 점심식사시간 {
     static class Person implements Comparable<Person>{
         int x,y,time;
- 
         public Person(int x, int y, int time) {
             this.x = x;
             this.y = y;
             this.time = time;
         }
- 
         @Override
         public int compareTo(Person o) {
             return this.time-o.time;
         }
-         
-         
     }
     static List <int[]> personlist;
     static PriorityQueue <Person> stair1;
@@ -92,15 +87,12 @@ public class 점심식사시간 {
                     stair2.add(new Person(x,y,dir));
                 }
             }
-             
             result=Math.min(result, timestart());
-             
             return ;
         }
          
         check[cnt]=true;
         powerset(cnt+1,size);
-         
          
         check[cnt]=false;
         powerset(cnt+1,size);
@@ -126,8 +118,6 @@ public class 점심식사시간 {
                     if(seconds[i][1]==0) seconds[i][0]=0;
                 }
             }
-             
-             
              
             int size1=stair1.size();
             for(int i=0;i<size1;i++) {
@@ -159,13 +149,6 @@ public class 점심식사시간 {
             size2=stair2.size();
             if(size1==0 && size2==0 && outstair(firsts) && outstair(seconds)) 
                 break;
-             
-             
-             
-             
-             
-             
-             
         }
         return time;
     }
@@ -182,7 +165,6 @@ public class 점심식사시간 {
                     firsts[i][1]=stair[s][0];
                     return ;
                 }
-             
         }
     }
     private static boolean stairStatus(int [][]s) {
@@ -200,5 +182,4 @@ public class 점심식사시간 {
     private static int dir2(int x, int y) {
         return Math.abs(x-stair[1][1])+Math.abs(y-stair[1][2]);
     }
- 
 }
