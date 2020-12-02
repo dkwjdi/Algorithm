@@ -43,9 +43,7 @@ public class boj_17281_야구 {
 			visited[i]=true;
 			permutation(cnt+1);
 			visited[i]=false;
-			
 		}
-		
 	}
 	private static int play() {
 		int score=0;
@@ -65,7 +63,6 @@ public class boj_17281_야구 {
 			}
 		}
 		return score;
-		
 	}
 	private static int calScore(int roota, boolean[] base) {
 		int score=0;

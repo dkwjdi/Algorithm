@@ -84,8 +84,6 @@ public class boj_17822_원판돌리기 {
 				sum+=list[i].get(j).num;
 			}
 		}
-
-		
 		return sum;
 
 	}
