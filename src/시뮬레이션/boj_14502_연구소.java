@@ -28,7 +28,7 @@ public class boj_14502_연구소 {
 		 
 		 N=Integer.parseInt(st.nextToken());
 		 M=Integer.parseInt(st.nextToken());
-		 map= new int [N][M];
+		 map=new int [N][M];
 		 copy= new int [N][M];
 		 list=new ArrayList<>();
 		 result=Integer.MIN_VALUE;
