@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 public class boj_17837_새로운게임2 {
@@ -32,7 +30,6 @@ public class boj_17837_새로운게임2 {
         
         map=new int[N][N];
         sb=new StringBuilder[N][N];
-       
         
         for(int i=0; i<N;i++) {
         	st = new StringTokenizer(br.readLine(), " ");
@@ -51,19 +48,15 @@ public class boj_17837_새로운게임2 {
         	else if(dir==2) dir=1;
         	list.add(new Info(x,y,dir));
         }
-        
         System.out.println(solve());
     }
 
 	private static int solve() {
 		int size=list.size();
-		
 		for(int i=0; i<size; i++) {
 			Info info = list.get(i);
 			sb[info.x][info.y].append(i);
 		}
-		
-		
 		
 		for(int k=0 ; k<1001; k++) {
 			for(int i=0; i<size; i++) {
@@ -71,7 +64,6 @@ public class boj_17837_새로운게임2 {
 				
 				int nx=info.x+dx[info.dir];
 				int ny=info.y+dy[info.dir];
-				
 				//이동방향 반대로 바꾸고 한칸이동 근데 거기가 파란색이면 가만히 있어야 함(파랑, 벽 )
 				if(nx<0 || ny<0|| nx>=N || ny>=N || map[nx][ny]==2) {
 					info.dir=(info.dir+2)%4;
@@ -79,11 +71,8 @@ public class boj_17837_새로운게임2 {
 					ny=info.y+dy[info.dir];
 				}
 				if(!colorCheck(i,info,nx,ny,k)) return k+1;
-				
-				
 			}
 		}
-		
 		return -1;
 	}
 
@@ -94,13 +83,9 @@ public class boj_17837_새로운게임2 {
 		StringBuilder moveHorse=new StringBuilder(sb[info.x][info.y].substring(idx));
 		sb[info.x][info.y].delete(idx, sb[info.x][info.y].length());
 		
+		if(map[nx][ny]==0) sb[nx][ny].append(moveHorse.toString()); //흰색
 		
-		if(map[nx][ny]==0) {
-			sb[nx][ny].append(moveHorse.toString()); //흰색
-		}
-		else if(map[nx][ny]==1) { //빨간색
-			sb[nx][ny].append(moveHorse.reverse().toString());
-		}
+		else if(map[nx][ny]==1) sb[nx][ny].append(moveHorse.reverse().toString());
 		
 		for(int j=0; j<moveHorse.length(); j++) {
 			char horseIdx= moveHorse.charAt(j);
@@ -108,11 +93,7 @@ public class boj_17837_새로운게임2 {
 			move.x=nx;
 			move.y=ny;
 		}
-		
 		if(sb[nx][ny].length()>=4) return false;
 		return true;
-		
 	}
-
-
 }
