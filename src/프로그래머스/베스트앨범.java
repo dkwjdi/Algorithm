@@ -22,18 +22,6 @@ public class 베스트앨범 {
 				return o.play-this.play;
 			}
 		}
-		class Music implements Comparable<Music>{
-			String genre;
-			int totalPlay;
-			public Music(String genre, int totalPlay) {
-				this.genre = genre;
-				this.totalPlay = totalPlay;
-			}
-			@Override
-			public int compareTo(Music o) {
-				return o.totalPlay-this.totalPlay;
-			}
-		}
 	    public int[] solution(String[] genres, int[] plays) {
 	        
 	        List<Integer> answerList= new ArrayList<>();
@@ -51,11 +39,7 @@ public class 베스트앨범 {
 	        }
 	        
 	        List<String> totalPlayList = new ArrayList<>(bestGenre.keySet());
-	        //for(String music : bestGenre.keySet()) {
-	        	
-	        	//totalPlayList.add(new Music(music, bestGenre.get(music)));
-	      //  }
-	      //  Collections.sort(totalPlayList);
+	   
 	        Collections.sort(totalPlayList, (o1, o2) -> (bestGenre.get(o2).compareTo(bestGenre.get(o1))));
 	        
 	        for(int i=0; i<totalPlayList.size(); i++) {

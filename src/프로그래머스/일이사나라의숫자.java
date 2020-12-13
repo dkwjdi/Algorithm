@@ -22,7 +22,8 @@ public class 일이사나라의숫자 {
 	    }
 	}
 	public static void main(String[] args) {
-		new Solution().solution(13);
+		System.out.println(new Solution().solution(13));
+		
 	}
 
 }
