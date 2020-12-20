@@ -22,17 +22,14 @@ public class JadenCase문자열만들기 {
 	        	else answer+=str2;
 	        	
 	        	answer+=" ";
-	        		
-	        	
-	        	
 	        }
 	        int answerlen=answer.length();
 	        int slen=s.length();
 	        
 	        if(answerlen-1 < slen ) {
-	        	for(int i=0; i<=s.length()-answer.length(); i++)
+	        	for(int i=0; i<=s.length()-answer.length(); i++) {
 	        		answer+=" ";
-	        	
+	        	}
 	        }
 	        return answer.substring(0, answer.length()-1);
 	    }
