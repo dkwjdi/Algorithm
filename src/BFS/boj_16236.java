@@ -51,7 +51,6 @@ public class boj_16236 {
 					}
 				}
 				else if(p.distance==MinDistance) {
-					if(p.)
 				}
 			}
 			

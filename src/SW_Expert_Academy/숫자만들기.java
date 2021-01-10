@@ -36,24 +36,15 @@ public class 숫자만들기 {
 
 	}
 
-
-
 	private static void solve(int cnt, int plus, int minus, int mul, int div, int result) {
 		if(cnt==N-1) {
 			max=Math.max(result, max);
 			min=Math.min(result, min);
 			return;
 		}
-		
 		if(plus>0) solve(cnt+1, plus-1, minus, mul, div, result+nums[cnt+1]);
 		if(minus>0) solve(cnt+1, plus, minus-1, mul, div, result-nums[cnt+1]);
 		if(mul>0) solve(cnt+1, plus, minus, mul-1, div, result*nums[cnt+1]);
 		if(div>0) solve(cnt+1, plus, minus, mul, div-1, result/nums[cnt+1]);
-		
 	}
-
-
-
-
-
 }

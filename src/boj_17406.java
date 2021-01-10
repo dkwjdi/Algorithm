@@ -92,7 +92,6 @@ public class boj_17406 {
 			for (int q = p[i].r + p[i].s; q > p[i].r - p[i].s; q--) {
 				if (q == p[i].r + p[i].s) { // 마지막번호
 					Second = copymap[p[i].r + p[i].s][p[i].c+p[i].s];
-					copymap[p[i].r + p[i].s][p[i].c+p[i].s]=first
 				} else {
 					copymap[p[i].r - p[i].s][q + 1] = copymap[p[i].r - p[i].s][q];
 				}
