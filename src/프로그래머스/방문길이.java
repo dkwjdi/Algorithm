@@ -28,7 +28,6 @@ public class 방문길이 {
 	        	x=nx;
 	        	y=ny;
 	        }
-	        
 	        return answer;
 	    }
 	}
