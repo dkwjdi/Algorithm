@@ -21,21 +21,15 @@ public class 카카오테스트2번 {
 			List<String> list = new ArrayList<>();
 			
 			for(int c=0; c<course.length; c++) {
-				HashMap<String ,Integer> hm = new HashMap<>();
-				int courseNum=course[c];
+				HashMap<String ,Integer> hm = new HashMap<>(); //입력 한 줄에 대해 
+				int courseNum=course[c]; //코스요리 개수
+				StringBuilder sb= new StringBuilder();
 				
-				for(int o=0; o<orders.length; o++) {
+				for(int o=0; o<orders.length; o++) { //입력들어온 한줄의 길이!
 					String order=orderSort(orders[o]);
-					int size=order.length();
 					
-					for(int i=0; i<size-(courseNum-1); i++) {
-						for(int j=i+1; j<size-(courseNum-2); j++) {
-							String courseFood=Character.toString(order.charAt(i));
-							courseFood+=order.substring(j, j+courseNum-1);
-							if(hm.containsKey(courseFood)) hm.put(courseFood, hm.get(courseFood)+1);
-							else hm.put(courseFood, 1);
-						}
-					}
+					combi(0,0,order.length(),hm,order,sb,courseNum); //start
+					
 				}
 				answerSelect(hm,list);
 			}
@@ -43,6 +37,30 @@ public class 카카오테스트2번 {
 			for(int i=0; i<list.size(); i++) answer[i]=list.get(i);
 			Arrays.sort(answer);
 			return answer;
+		}
+
+
+		private void combi(int cnt,int start, int length, HashMap<String, Integer> hm, String order, StringBuilder sb, int courseNum) {
+			if(sb.length()==courseNum) { //다 뽑았으면
+				String courseFood=sb.toString();
+				//System.out.println(courseFood);
+				if(hm.containsKey(courseFood)) hm.put(courseFood, hm.get(courseFood)+1);
+				else hm.put(courseFood, 1);
+				sb=new StringBuilder();
+				return;
+			}
+			
+			if(cnt==length) { //다 돌았는데 글자 못채우면 
+				sb=new StringBuilder();
+				return;
+			}
+			
+			for(int i=start; i<length; i++) {
+				sb.append(order.charAt(i));
+				combi(cnt+1,i+1,length,hm,order,sb,courseNum); 
+				sb.deleteCharAt(sb.length()-1);
+			}
+			
 		}
 
 		private void answerSelect(HashMap<String, Integer> hm, List<String> list) {
@@ -74,7 +92,7 @@ public class 카카오테스트2번 {
 	}
 	public static void main(String[] args) {
 		System.out.println(Arrays.toString(new Solution().solution(
-				new String[] {"BACFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"},
+				new String[] {"ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"},
 				new int[] {2,3,4})));
 		System.out.println(Arrays.toString(new Solution().solution(
 				new String[] {"ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"},
