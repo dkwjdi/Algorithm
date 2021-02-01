@@ -7,6 +7,7 @@ public class 기능개발 {
 	static class Solution{
 		public int[] solution(int []progresses, int[] speeds) {
 			int []days=new int[progresses.length];
+			int a=0;
 			
 			for(int i=0; i<progresses.length; i++) {
 				int day=1;
